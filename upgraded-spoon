@@ -1,0 +1,31 @@
+import os
+
+print("           -----Welcome-----")
+print(" ")
+print("This simple script will generate a log file with sequential outputs.")
+print(" ")
+linecount = int(input("How many lines should be outputed? "))
+
+if linecount > 100000:
+	input("I'm not making that many lines. That's stupid.")
+	quit()
+
+pepsi = 0
+
+try:
+	os.remove("log")
+	os.mknod("log")
+	print("The previous log has been overwritten.")
+except:
+	print("Creating log file...")
+	os.mknod("log")
+	print("Log file has been created.")
+
+conke = open("log","a")
+
+while pepsi <= linecount:
+	conke.write(str(pepsi))
+	conke.write("\n")
+	pepsi += 1
+
+conke.close()
